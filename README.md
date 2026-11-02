@@ -1,13 +1,11 @@
-# Website replica starter
+# Mitti & Loom demo shop
 
-A configurable site-mapping and replica starter built with Node.js, Express, React, Vite, React Router, Tailwind CSS, and Lucide.
-
-> The target URL was not included in the project request. The crawler therefore requires a URL at run time; no target website or target-specific content is hard-coded. Only crawl sites you own or are authorized to access, and follow their terms and crawl policies.
+A fictional artisan-goods storefront built with React, Vite, React Router, Tailwind CSS, Lucide, Express, and a Cheerio crawler. The demo catalog, product descriptions, and abstract product illustrations are original placeholders; no target site's branding, copy, catalog, or imagery is included.
 
 ## Requirements
 
 - Node.js 20 or newer and npm
-- Network access to the authorized target site
+- Network access when crawling a site you own or have permission to map
 
 ## Install
 
@@ -17,55 +15,63 @@ From the repository root:
 npm install
 ```
 
-## Crawl a site
+## Run the demo
 
-```bash
-npm run crawl -- --url=https://example.com
-```
-
-Optional bounds:
-
-```bash
-npm run crawl -- --url=https://example.com --max-pages=30 --max-depth=3
-```
-
-The crawler stays on the target origin, ignores query strings and fragments when deduplicating pages, and writes its result to `client/public/sitemap-data.json`. Defaults are 50 pages, depth 4, a 15-second request timeout, and a 200 ms delay between fetched pages. The output contains page paths, titles, descriptions, headings, extracted main text, internal links, image/media URLs, plus navigation and footer links from the first crawled page.
-
-The crawler uses Cheerio against fetched HTML, so it does not execute client-side JavaScript. For JavaScript-rendered sites, a browser-based renderer may be needed. Inspect the generated data and confirm you have permission to reuse site text and assets.
-
-## Run locally
-
-Start the Express API and Vite development server together:
+Start the Express API and Vite development server:
 
 ```bash
 npm run dev
 ```
 
-- Frontend: <http://localhost:5173>
-- API: <http://localhost:3001/api/site>
-- Health check: <http://localhost:3001/api/health>
+- Storefront: <http://localhost:5173>
+- API data: <http://localhost:3001/api/site>
+- API health: <http://localhost:3001/api/health>
 
-The frontend requests `/api/site` first and falls back to the public `sitemap-data.json` file if the API is unavailable. The server exposes `/api/pages`, `/api/pages/:slug`, and serves the production frontend after a build.
+The demo has responsive collection and product pages, search, product sorting, a local cart drawer, quantity controls, and fictional sample data in `client/public/sitemap-data.json`. Checkout is intentionally a non-payment demo interaction.
 
-## Production build
+## Crawl an authorized site
+
+Only crawl a site you own or are authorized to map. Crawling replaces the demo JSON file with extracted data, so make a backup first if you want to keep the demo catalog.
 
 ```bash
-npm run build
+npm run crawl -- --url=https://your-authorized-domain.example
+```
+
+Optional crawl limits:
+
+```bash
+npm run crawl -- --url=https://your-authorized-domain.example --max-pages=30 --max-depth=3
+```
+
+The crawler stays on the target origin and writes paths, titles, descriptions, headings, page text, internal links, assets, and the first page's navigation/footer links into `client/public/sitemap-data.json`. Defaults are 50 pages, depth 4, a 15-second request timeout, and a 200 ms delay between requests. It uses Cheerio on fetched HTML and does not execute JavaScript; JavaScript-rendered sites may need an authorized browser-based crawler.
+
+When the JSON contains the crawler's generic page structure, the frontend switches to a neutral page-and-link preview. The API serves that data at `/api/site`, `/api/pages`, and `/api/pages/:slug`; the client falls back to the JSON file when the API is unavailable.
+
+## Production
+
+```bash
 npm start
 ```
 
-The production server listens on port `3001` by default. Configure `PORT` and `CLIENT_ORIGIN` as needed. Build the client before starting the server so `client/dist` exists.
+The root `npm start` script builds the client first and then starts Express, so the storefront is available at <http://localhost:3001/>. The API server listens on port `3001` by default. Configure `PORT` and `CLIENT_ORIGIN` as needed. If you start the server workspace directly before building the frontend, it now returns a clear build instruction instead of Express's generic “Cannot GET /” response.
 
-## Layout
+## Project layout
 
 ```text
-client/       React UI, Vite configuration, and generated public site data
+client/       React demo storefront, Vite configuration, and local data
 server/       Express API
-scripts/      Site crawler
+scripts/      Authorized-site crawler
 ```
 
-## Notes
+The repository already had Git history; its existing history was not reinitialized.
 
-- Routes are rendered from the paths discovered by the crawler. Unknown paths return users to the home page.
-- `client/public/sitemap-data.json` starts as an empty example structure and is replaced by each successful crawl.
-- This repository was already initialized as a Git repository; the application scaffold does not reinitialize or rewrite its Git history.
+The client source is grouped by responsibility:
+
+```text
+client/src/
+  components/  Shared header, footer, product cards, hero, and cart
+  hooks/       Reusable cart state
+  lib/         Store data loading and formatting helpers
+  pages/       Home, collection, product, search, story, and crawl-preview pages
+  App.jsx      Store loading and page selection
+```

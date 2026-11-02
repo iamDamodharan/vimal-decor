@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -64,10 +64,20 @@ app.get("/api/pages/:slug(*)", async (request, response, next) => {
 });
 
 app.use(express.static(clientBuildPath));
-app.get("*", (_request, response, next) => {
-  response.sendFile(path.join(clientBuildPath, "index.html"), (error) => {
-    if (error) next();
-  });
+app.get("*", async (_request, response, next) => {
+  const indexPath = path.join(clientBuildPath, "index.html");
+  try {
+    await access(indexPath);
+    response.sendFile(indexPath);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      response.status(503).type("text").send(
+        "Frontend build not found. Run `npm start` from the project root to build and serve the app, or run `npm run dev` for local development."
+      );
+      return;
+    }
+    next(error);
+  }
 });
 
 app.use((error, _request, response, _next) => {

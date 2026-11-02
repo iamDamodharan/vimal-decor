@@ -1,8 +1,169 @@
 {
   "source": "",
-  "title": "Website replica",
+  "title": "Mitti & Loom",
+  "description": "A fictional independent studio for thoughtful everyday objects.",
   "generatedAt": "",
-  "pages": [],
-  "navigation": [],
-  "footerLinks": []
+  "announcement": "A little care in every parcel · Complimentary delivery over ₹1,500",
+  "navigation": [
+    { "label": "Table & kitchen", "path": "/collections/table-kitchen" },
+    { "label": "Home & garden", "path": "/collections/home-garden" },
+    { "label": "Carry & keep", "path": "/collections/carry-keep" },
+    { "label": "Small gifts", "path": "/collections/small-gifts" }
+  ],
+  "footerLinks": [
+    { "label": "Our story", "path": "/pages/our-story" },
+    { "label": "Shipping notes", "path": "/pages/shipping" },
+    { "label": "Returns", "path": "/pages/returns" }
+  ],
+  "slides": [
+    {
+      "eyebrow": "A softer start to the day",
+      "title": "A home, made a little more yours.",
+      "cta": "Find your everyday",
+      "href": "/collections/home-garden",
+      "art": "sunrise"
+    },
+    {
+      "eyebrow": "Objects for the everyday table",
+      "title": "Gather slowly. Stay a little longer.",
+      "cta": "Set the table",
+      "href": "/collections/table-kitchen",
+      "art": "table"
+    },
+    {
+      "eyebrow": "Made to go where you go",
+      "title": "Carry the little things with care.",
+      "cta": "Browse the edit",
+      "href": "/collections/carry-keep",
+      "art": "woven"
+    }
+  ],
+  "collections": [
+    {
+      "title": "Table & kitchen",
+      "handle": "table-kitchen",
+      "path": "/collections/table-kitchen",
+      "description": "Useful, tactile pieces for meals, small rituals and the everyday in between.",
+      "productsCount": 3,
+      "symbol": "01",
+      "art": "clay",
+      "products": ["speckled-serving-bowl", "soft-check-runner", "stoneware-carafe"]
+    },
+    {
+      "title": "Home & garden",
+      "handle": "home-garden",
+      "path": "/collections/home-garden",
+      "description": "Little companions for quiet corners, windowsills and green things.",
+      "productsCount": 2,
+      "symbol": "02",
+      "art": "garden",
+      "products": ["window-garden-planter", "soft-glow-candle-cups"]
+    },
+    {
+      "title": "Carry & keep",
+      "handle": "carry-keep",
+      "path": "/collections/carry-keep",
+      "description": "Easygoing storage and market-day essentials with a handmade feel.",
+      "productsCount": 2,
+      "symbol": "03",
+      "art": "woven",
+      "products": ["market-day-tote", "soft-check-runner"]
+    },
+    {
+      "title": "Small gifts",
+      "handle": "small-gifts",
+      "path": "/collections/small-gifts",
+      "description": "A few thoughtful things for the people who make a place feel like home.",
+      "productsCount": 3,
+      "symbol": "04",
+      "art": "gift",
+      "products": ["soft-glow-candle-cups", "speckled-serving-bowl", "market-day-tote"]
+    }
+  ],
+  "products": [
+    {
+      "title": "Speckled serving bowl",
+      "handle": "speckled-serving-bowl",
+      "path": "/products/speckled-serving-bowl",
+      "category": "Table & kitchen",
+      "art": "clay",
+      "price": "840",
+      "compareAtPrice": "980",
+      "available": true,
+      "description": "A softly rounded serving bowl for shared snacks, bright fruit and long lunches. Its gently uneven glaze makes each piece feel a little different."
+    },
+    {
+      "title": "Soft-check table runner",
+      "handle": "soft-check-runner",
+      "path": "/products/soft-check-runner",
+      "category": "Table & kitchen",
+      "art": "woven",
+      "price": "1250",
+      "compareAtPrice": null,
+      "available": true,
+      "description": "An easy cotton layer for the middle of the table, woven in a quiet check and finished with a short fringe."
+    },
+    {
+      "title": "Stoneware water carafe",
+      "handle": "stoneware-carafe",
+      "path": "/products/stoneware-carafe",
+      "category": "Table & kitchen",
+      "art": "vessel",
+      "price": "1480",
+      "compareAtPrice": null,
+      "available": true,
+      "description": "A useful, hand-finished carafe that feels just as at home beside the bed as it does on a dinner table."
+    },
+    {
+      "title": "Window-garden planter",
+      "handle": "window-garden-planter",
+      "path": "/products/window-garden-planter",
+      "category": "Home & garden",
+      "art": "garden",
+      "price": "690",
+      "compareAtPrice": null,
+      "available": true,
+      "description": "A small planter for herbs, cuttings and sunny ledges. The drainage tray is included."
+    },
+    {
+      "title": "Soft-glow candle cups",
+      "handle": "soft-glow-candle-cups",
+      "path": "/products/soft-glow-candle-cups",
+      "category": "Small gifts",
+      "art": "gift",
+      "price": "560",
+      "compareAtPrice": null,
+      "available": true,
+      "description": "A pair of simple candle cups with a warm, low glow for unhurried evenings and little celebrations."
+    },
+    {
+      "title": "Market-day carry tote",
+      "handle": "market-day-tote",
+      "path": "/products/market-day-tote",
+      "category": "Carry & keep",
+      "art": "woven",
+      "price": "980",
+      "compareAtPrice": null,
+      "available": true,
+      "description": "A roomy, reusable carry-all for market finds, library books or the bits and pieces that come along for the day."
+    }
+  ],
+  "sections": [
+    {
+      "title": "The little things you reach for",
+      "collectionTitle": "Table & kitchen",
+      "collectionPath": "/collections/table-kitchen",
+      "products": ["speckled-serving-bowl", "soft-check-runner", "stoneware-carafe"]
+    },
+    {
+      "title": "A bit of green, a bit of glow",
+      "collectionTitle": "Home & garden",
+      "collectionPath": "/collections/home-garden",
+      "products": ["window-garden-planter", "soft-glow-candle-cups", "market-day-tote"]
+    }
+  ],
+  "pages": [
+    { "slug": "home", "path": "/", "title": "Mitti & Loom", "description": "A fictional independent studio for thoughtful everyday objects.", "headings": [], "links": [] }
+  ],
+  "story": "Mitti & Loom is a fictional independent studio made for this demo. We believe the best everyday objects are useful, warm and made to be kept. This sample catalogue uses original placeholder names and copy; no third-party store content or product imagery is included."
 }
